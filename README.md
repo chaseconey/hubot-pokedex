@@ -19,7 +19,7 @@ Then add **hubot-pokedex** to your `external-scripts.json`:
 ## Sample Interaction
 
 ```
-user1> hubot pokedex me 1
+user1> hubot pokedex me 15
 Hubot> http://pokeapi.co/media/img/15.png
 Hubot> Pokemon name: Beedrill [poison bug]
         Attack: 90

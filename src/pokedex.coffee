@@ -4,10 +4,7 @@
 # Configuration:
 #
 # Commands:
-#   hubot pokedex pikachu - <gives pokedex stats on pikachu>
-#
-# Notes:
-#   <optional notes required for the script>
+#   hubot pokedex 15 - <gives pokedex stats on Beedrill (pokemon with id of 15)>
 #
 # Author:
 #   Chase Coney[chase.coney@chaseconey.com]
