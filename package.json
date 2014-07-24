@@ -1,7 +1,7 @@
 {
   "name": "hubot-pokedex",
   "description": "A hubot script that catches them all",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Chase Coney <chasiepoo@gmail.com>",
   "license": "MIT",
 
