@@ -2,18 +2,18 @@
   "name": "hubot-pokedex",
   "description": "A hubot script that catches them all",
   "version": "0.0.4",
-  "author": "Chase Coney <chasiepoo@gmail.com>",
+  "author": "Chase Coney <chase.coney@chaseconey.com>",
   "license": "MIT",
 
   "keywords": ["hubot","hubot-scripts","pokemon","pokedex"],
 
   "repository": {
     "type": "git",
-    "url": "git://github.com/hubot-scripts/hubot-pokedex.git"
+    "url": "git://github.com/chaseconey/hubot-pokedex.git"
   },
 
   "bugs": {
-    "url": "https://github.com/hubot-scripts/hubot-pokedex/issues"
+    "url": "https://github.com/chaseconey/hubot-pokedex/issues"
   },
 
   "dependencies": {
