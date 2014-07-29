@@ -18,12 +18,14 @@ getPokemon = (msg) ->
         msg.send "error"
         return
 
-      abilities = gatherNames(results.abilities)
-      moves = gatherNames(results.moves)
-      types = gatherNames(results.types)
+      abilities = gather(results.abilities, 'name')
+      moves = gather(results.moves, 'name')
+      types = gather(results.types, 'name')
+      evolutions = gather(results.evolutions, 'to')
 
       msg.send "http://pokeapi.co/media/img/#{poke_id}.png"
       msg.send "Name: #{results.name} [#{types}]\n
+        Evolutions: #{evolutions}\n
         Attack: #{results.attack}\n
         Defense: #{results.defense}\n
         Catch rate: #{results.catch_rate}\n
@@ -31,10 +33,10 @@ getPokemon = (msg) ->
         # of Moves: #{moves.length}\n
         GOTTA CATCH'EM ALL!"
 
-gatherNames = (attr) ->
+gather = (attr, prop) ->
   str = ''
   for key,value of attr
-    str += value.name + ' '
+    str += value[prop] + ' '
   str.trim()
 
 module.exports = (robot) ->
