@@ -23,7 +23,7 @@ getPokemon = (msg) ->
       types = gather(results.types, 'name')
       evolutions = gather(results.evolutions, 'to')
 
-      msg.send "http://pokeapi.co/media/img/#{poke_id}.png"
+      msg.send "http://pokeapi.co/media/img/#{results.pkdx_id}.png"
       msg.send "Name: #{results.name} [#{types}]\n
         Evolutions: #{evolutions}\n
         Attack: #{results.attack}\n
