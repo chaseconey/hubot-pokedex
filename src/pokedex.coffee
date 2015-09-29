@@ -5,13 +5,13 @@
 #
 # Commands:
 #   hubot pokedex 15 - <gives pokedex stats on Beedrill (pokemon with id of 15)>
+#   a wild pokemon appears - randomly selects a pokemon from the pokedex
 #
 # Author:
 #   Chase Coney[chase.coney@chaseconey.com]
 
-getPokemon = (msg) ->
-  poke_id = escape(msg.match[1])
-  msg.http("http://pokeapi.co/api/v1/pokemon/#{poke_id}/")
+fetchPokemon = (msg, uri) ->
+  msg.http("#{uri}")
     .get() (err, res, body) ->
       results = JSON.parse(body)
       if results.eror
@@ -39,6 +39,32 @@ gather = (attr, prop) ->
     str += value[prop] + ' '
   str.trim()
 
+getPokemon = (msg) ->
+  poke_id = escape(msg.match[1])
+
+  fetchPokemon(msg, "http://pokeapi.co/api/v1/pokemon/#{poke_id}/")
+
+
+
+# retrieves a random pokemon by grabbing the current pokedex, then selecting
+# a random entry from it and loading that
+getWild = (msg) ->
+  msg.http("http://pokeapi.co/api/v1/pokedex/1/")
+    .get() (err, res, body) ->
+      pokedex = JSON.parse(body)
+      if pokedex.eror
+        msg.send "no pokemon are in this location"
+        return
+
+      # got our pokedex, find a random entry, then invoke getPokemon
+      pokemon = pokedex.pokemon[Math.floor(Math.random() * pokedex.pokemon.length)]
+
+      fetchPokemon(msg, "http://pokeapi.co/#{pokemon.resource_uri}")
+
+
 module.exports = (robot) ->
   robot.respond /pokedex me (.*)/i, (msg) ->
     getPokemon(msg)
+
+  robot.hear /a wild pokemon appears/i, (msg) ->
+    getWild(msg)
